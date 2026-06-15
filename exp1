@@ -1,0 +1,55 @@
+Q) Experiment 1: Employee Salary Management System (Long Program)
+Problem Statement
+Develop a Python program to maintain employee records. Accept Employee ID, Name, Basic Salary and calculate HRA, DA, PF, Gross Salary, and Net Salary.
+
+
+
+
+class Employee:
+
+    def __init__(self, eid, name, basic):
+        self.eid = eid
+        self.name = name
+        self.basic = basic
+
+    def calculate_salary(self):
+
+        hra = self.basic * 0.20
+        da = self.basic * 0.10
+        pf = self.basic * 0.05
+
+        gross = self.basic + hra + da
+        net = gross - pf
+
+        return hra, da, pf, gross, net
+
+    def display(self):
+
+        hra, da, pf, gross, net = self.calculate_salary()
+
+        print("\nEmployee Details")
+        print("Employee ID :", self.eid)
+        print("Name        :", self.name)
+        print("Basic Salary:", self.basic)
+        print("HRA         :", hra)
+        print("DA          :", da)
+        print("PF          :", pf)
+        print("Gross Salary:", gross)
+        print("Net Salary  :", net)
+
+employees = []
+
+n = int(input("Enter Number of Employees: "))
+
+for i in range(n):
+
+    eid = input("Enter Employee ID: ")
+    name = input("Enter Employee Name: ")
+    basic = float(input("Enter Basic Salary: "))
+
+    emp = Employee(eid, name, basic)
+
+    employees.append(emp)
+
+for emp in employees:
+    emp.display()
